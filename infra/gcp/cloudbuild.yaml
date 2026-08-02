@@ -1,6 +1,6 @@
 substitutions:
   _REGION: us-west2
-  _SERVICE: keystone-dev
+  _SERVICE: keyston-dev
   _REPOSITORY: highland-apps
 
 steps:
