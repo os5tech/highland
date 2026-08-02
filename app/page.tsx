@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/src/server/auth/options";
 import { getDashboardSecurityContext } from "@/src/server/controllers/dashboardController";
+import { getSystemDiagnostics } from "@/src/server/controllers/systemDiagnosticsController";
 
 export const dynamic = "force-dynamic";
 
@@ -118,6 +119,7 @@ export default async function Home() {
   }
 
   const security = getDashboardSecurityContext(session);
+  const diagnostics = await getSystemDiagnostics();
 
   return (
     <main className="app-shell">
@@ -365,12 +367,18 @@ export default async function Home() {
 
         <section className="panel diagnostics" aria-label="Diagnostics">
           <div>
-            <h2>Build Notes</h2>
+            <h2>Environment Diagnostics</h2>
             <p>
-              This first adaptation is sourced from the official Virtual PM specification, process notes, user-story backlog, and labor worksheet. Next implementation layers should add real data models, authentication, protected admin routes, D1 persistence, file importers, and export generation.
+              Runtime config: {diagnostics.runtime.configured} of {diagnostics.runtime.required} required values set. Database: {diagnostics.database.message}
             </p>
+            {diagnostics.runtime.missing.length > 0 ? (
+              <p className="diagnostic-warning">Missing runtime values: {diagnostics.runtime.missing.join(", ")}</p>
+            ) : null}
+            {diagnostics.database.missingTables.length > 0 ? (
+              <p className="diagnostic-warning">Missing tables: {diagnostics.database.missingTables.join(", ")}</p>
+            ) : null}
           </div>
-          <strong>Phase 1</strong>
+          <strong>{diagnostics.database.status}</strong>
         </section>
       </section>
     </main>

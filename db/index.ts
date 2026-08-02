@@ -11,6 +11,8 @@ export function getPgPool() {
 
   pool ??= new Pool({
     connectionString: process.env.DATABASE_URL,
+    connectionTimeoutMillis: 3000,
+    idleTimeoutMillis: 10000,
     ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: true } : undefined,
   });
 
