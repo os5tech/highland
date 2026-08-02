@@ -3,6 +3,20 @@ import AzureADProvider from "next-auth/providers/azure-ad";
 import { rolesFromEntraClaims } from "./role-mapping";
 
 export const authOptions: NextAuthOptions = {
+  debug: process.env.NODE_ENV !== "production",
+  logger: {
+    error(code, metadata) {
+      console.error("[next-auth:error]", code, metadata);
+    },
+    warn(code) {
+      console.warn("[next-auth:warn]", code);
+    },
+    debug(code, metadata) {
+      if (process.env.NODE_ENV !== "production") {
+        console.debug("[next-auth:debug]", code, metadata);
+      }
+    },
+  },
   pages: {
     signIn: "/login",
   },

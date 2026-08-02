@@ -1,3 +1,5 @@
+import { MicrosoftSignInButton } from "./MicrosoftSignInButton";
+
 export default function LoginPage() {
   return (
     <main className="login-shell">
@@ -21,9 +23,7 @@ export default function LoginPage() {
           Use your Microsoft 365 account to access payroll readiness, PM approvals, job-cost allocation, and protected administration.
         </p>
 
-        <a className="primary-login" href="/api/auth/signin/azure-ad">
-          Continue with Microsoft
-        </a>
+        <MicrosoftSignInButton />
 
         <p className="login-note">
           Access is role-based. Payroll, accounting, CFO, and admin actions require assigned permissions and are logged.

@@ -1,6 +1,6 @@
 substitutions:
-  _REGION: us-central1
-  _SERVICE: highland-virtual-time-pm
+  _REGION: us-west2
+  _SERVICE: keystone-dev
   _REPOSITORY: highland-apps
 
 steps:
