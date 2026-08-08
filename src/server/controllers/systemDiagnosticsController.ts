@@ -3,6 +3,7 @@ import { getPgPool } from "@/db";
 const expectedTables = [
   "allocation_batches",
   "audit_events",
+  "branding_settings",
   "cost_codes",
   "employees",
   "memberships",

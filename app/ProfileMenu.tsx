@@ -7,7 +7,6 @@ type ProfileMenuProps = {
     name: string;
     email: string;
     phone: string;
-    roles: string[];
     preferences: string[];
   };
 };
@@ -45,10 +44,6 @@ export function ProfileMenu({ profile }: ProfileMenuProps) {
           <div>
             <dt>Phone</dt>
             <dd>{profile.phone}</dd>
-          </div>
-          <div>
-            <dt>Access</dt>
-            <dd>{profile.roles.join(", ").replaceAll("_", " ")}</dd>
           </div>
         </dl>
 

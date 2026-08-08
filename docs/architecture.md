@@ -1,4 +1,4 @@
-# Highland Virtual Time PM Architecture
+# Highland Virtual Patrick Architecture
 
 ## Pattern
 

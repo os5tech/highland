@@ -1,7 +1,6 @@
 import {
   boolean,
   index,
-  integer,
   jsonb,
   numeric,
   pgEnum,
@@ -45,6 +44,26 @@ export const organizations = pgTable("organizations", {
   id: uuid("id").defaultRandom().primaryKey(),
   name: text("name").notNull(),
   microsoftTenantId: text("microsoft_tenant_id").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const brandingSettings = pgTable("branding_settings", {
+  id: text("id").primaryKey().default("highland"),
+  primaryLogoDataUrl: text("primary_logo_data_url"),
+  primaryLogoFileName: text("primary_logo_file_name"),
+  primaryLogoMimeType: text("primary_logo_mime_type"),
+  compactLogoDataUrl: text("compact_logo_data_url"),
+  compactLogoFileName: text("compact_logo_file_name"),
+  compactLogoMimeType: text("compact_logo_mime_type"),
+  reportHeaderTitle: text("report_header_title").default("Highland Construction").notNull(),
+  reportHeaderContactBlock: text("report_header_contact_block").default("Payroll and job-costing package").notNull(),
+  emailSenderDisplayName: text("email_sender_display_name").default("Highland Virtual Patrick").notNull(),
+  emailDefaultFooter: text("email_default_footer")
+    .default("This message was generated for Highland Construction operations.")
+    .notNull(),
+  pdfCoverPageTitle: text("pdf_cover_page_title").default("Payroll Readiness Package").notNull(),
+  pdfFooterLabel: text("pdf_footer_label").default("Highland Construction confidential").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 });

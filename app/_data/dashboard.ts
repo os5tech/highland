@@ -78,7 +78,7 @@ export const integrations = [
 ];
 
 export const agents = [
-  ["Virtual Time PM", "Summarizes missing time, rejected entries, readiness, and reconciliation issues.", "No payroll finalization authority."],
+  ["Virtual Patrick", "Summarizes missing time, rejected entries, readiness, and reconciliation issues.", "No payroll finalization authority."],
   ["Timesheet Parser", "Turns SMS/email/free text into structured entries with confidence scores.", "Low confidence requires confirmation."],
   ["PM Review Assistant", "Highlights unusual hours, bad cost codes, weekend work, and allocation issues.", "PM must decide."],
   ["Cost Allocation Agent", "Explains labor splits and flags unreconciled totals or anomalies.", "Accounting approves batch."],

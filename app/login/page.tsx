@@ -12,7 +12,7 @@ export default function LoginPage() {
             <span />
           </div>
           <div>
-            <p>Virtual Time PM</p>
+            <p>Virtual Patrick</p>
             <strong>Highland Construction</strong>
           </div>
         </div>
