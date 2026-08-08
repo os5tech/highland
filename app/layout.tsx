@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Highland PM Operations Desk",
   description:
-    "Highland Construction command center for projects, safety, financial controls, integrations, and protected administration.",
+    "Highland Construction dashboard for projects, safety, financial controls, integrations, and protected administration.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

@@ -6,7 +6,7 @@ The project objective is to improve Highland Construction's operational efficien
 
 ## Current App Surface
 
-The repository now includes a first-pass Highland Virtual Time PM web layout based on the official software specification, process notes, user-story backlog, and labor worksheet. It provides a dashboard-style command center for semi-monthly payroll readiness, time intake, PM approvals, ADP import/export, job-cost allocation, QuickBooks export, Procore project/cost-code sync, AI agents, diagnostics, and a restricted Admin Vault for high-importance configuration such as logos, API keys, access policy, audit logging, data sources, and emergency lockout.
+The repository now includes a first-pass Highland Virtual Time PM web layout based on the official software specification, process notes, user-story backlog, and labor worksheet. It provides a dashboard-style operations center for semi-monthly payroll readiness, time intake, PM approvals, ADP import/export, job-cost allocation, QuickBooks export, Procore project/cost-code sync, AI agents, diagnostics, and a restricted Admin Vault for high-importance configuration such as logos, API keys, access policy, audit logging, data sources, and emergency lockout.
 
 Sensitive values should never be committed directly to source control. Store real API keys, credentials, and environment-specific secrets through the hosting platform or an approved secret manager, with role-based access and audit logging.
 

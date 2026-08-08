@@ -1,5 +1,5 @@
 export const navigation = [
-  { label: "Dashboard", href: "/#command" },
+  { label: "Dashboard", href: "/#dashboard" },
   { label: "Time Intake", href: "/#time-intake" },
   { label: "PM Approval", href: "/#pm-approval" },
   { label: "Job Costing", href: "/#job-costing" },

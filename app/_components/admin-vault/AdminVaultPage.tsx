@@ -47,7 +47,7 @@ export function AdminVaultPage({ security }: AdminVaultPageProps) {
               <p>Access decision</p>
               <strong>Allowed</strong>
             </div>
-            <a className="vault-back-link" href="/">Return to command</a>
+            <a className="vault-back-link" href="/">Return to dashboard</a>
           </div>
 
           <div className="admin-vault-grid">

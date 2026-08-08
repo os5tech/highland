@@ -6,7 +6,7 @@ type DashboardSidebarProps = {
   canAccessAdminVault?: boolean;
 };
 
-export function DashboardSidebar({ activeHref = "/#command", canAccessAdminVault = false }: DashboardSidebarProps) {
+export function DashboardSidebar({ activeHref = "/#dashboard", canAccessAdminVault = false }: DashboardSidebarProps) {
   const visibleNavigation = navigation.filter((item) => !item.requiresAdmin || canAccessAdminVault);
 
   return (

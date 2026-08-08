@@ -20,7 +20,7 @@ export function DashboardPage({ diagnostics, security }: DashboardPageProps) {
     <main className="app-shell">
       <DashboardSidebar canAccessAdminVault={security.permissions.canAccessAdminVault} />
 
-      <section className="workspace" id="command">
+      <section className="workspace" id="dashboard">
         <DashboardHero security={security} />
         <MetricsSection />
         <WorkflowSection />
