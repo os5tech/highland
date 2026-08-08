@@ -35,7 +35,7 @@ export function ProfileMenu({ profile }: ProfileMenuProps) {
       <div className="profile-popover">
         <div className="profile-heading">
           <span className="profile-avatar large" aria-hidden="true">{initials}</span>
-          <div>
+          <div className="profile-heading-text">
             <b>{profile.name}</b>
             <span>{profile.email}</span>
           </div>

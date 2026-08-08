@@ -346,16 +346,16 @@ h1 {
   border-bottom: 1px solid var(--line);
 }
 
-.profile-heading b,
-.profile-heading span {
+.profile-heading-text b,
+.profile-heading-text span {
   display: block;
 }
 
-.profile-heading b {
+.profile-heading-text b {
   font-size: 15px;
 }
 
-.profile-heading span {
+.profile-heading-text span {
   margin-top: 3px;
   color: var(--muted);
   font-size: 12px;
