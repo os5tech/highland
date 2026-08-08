@@ -75,6 +75,7 @@ export const users = pgTable(
     entraObjectId: text("entra_object_id").notNull(),
     email: text("email").notNull(),
     name: text("name"),
+    mobilePhone: text("mobile_phone"),
     isActive: boolean("is_active").default(true).notNull(),
     lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),

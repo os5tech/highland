@@ -15,6 +15,13 @@
       "when": 1786214036173,
       "tag": "0001_left_nico_minoru",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786216349310,
+      "tag": "0002_slimy_miek",
+      "breakpoints": true
     }
   ]
 }

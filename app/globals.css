@@ -303,6 +303,7 @@ h1 {
 }
 
 .profile-menu summary {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -316,8 +317,36 @@ h1 {
   list-style: none;
 }
 
+.profile-menu summary.missing-mobile {
+  border-color: rgba(154, 77, 66, 0.28);
+  box-shadow: 0 12px 26px rgba(154, 77, 66, 0.14);
+}
+
 .profile-menu summary::-webkit-details-marker {
   display: none;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  display: inline-grid;
+}
+
+.profile-alert-badge {
+  position: absolute;
+  top: -11px;
+  right: -2px;
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(154, 77, 66, 0.28);
 }
 
 .profile-avatar {
@@ -415,7 +444,71 @@ h1 {
   color: var(--foreground);
   font-size: 13px;
   font-weight: 700;
-  text-transform: capitalize;
+}
+
+.profile-required-message {
+  margin: 0;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.profile-phone-form {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.profile-phone-form label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-phone-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.profile-phone-form input {
+  min-width: 0;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--foreground);
+  font: inherit;
+  font-size: 13px;
+}
+
+.profile-phone-form .country-code-input {
+  padding: 0 8px;
+  text-align: center;
+}
+
+.profile-phone-form button {
+  width: auto;
+  min-height: 38px;
+  padding: 0 15px;
+  border-color: transparent;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 12px 24px rgba(36, 79, 67, 0.18);
+}
+
+.profile-phone-form p {
+  margin: 0;
+  color: #8b7641;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .profile-preferences {
