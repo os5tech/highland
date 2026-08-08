@@ -14,6 +14,13 @@ export function getDashboardSecurityContext(session: Session) {
       tenantId: user.tenantId ?? null,
       entraObjectId: user.entraObjectId ?? null,
     },
+    profile: {
+      name: user.name ?? user.email ?? "Signed-in user",
+      email: user.email ?? "Not provided",
+      phone: "Not configured",
+      roles,
+      preferences: ["Email notifications", "Teams-ready alerts", "Payroll exception summaries"],
+    },
     permissions: {
       canAccessAdminVault: canAccessAdminVault({ roles }),
       canManagePayroll: canManagePayroll({ roles }),

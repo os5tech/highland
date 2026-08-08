@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/src/server/auth/options";
+import { ProfileMenu } from "./ProfileMenu";
 import { getDashboardSecurityContext } from "@/src/server/controllers/dashboardController";
 import { getSystemDiagnostics } from "@/src/server/controllers/systemDiagnosticsController";
 
@@ -162,7 +163,10 @@ export default async function Home() {
             </p>
           </div>
           <div className="status-stack">
-            <div className="status-pill"><span />MVP Adaptation</div>
+            <div className="topbar-actions">
+              <div className="status-pill"><span />MVP Adaptation</div>
+              <ProfileMenu profile={security.profile} />
+            </div>
             <div className="identity-card">
               <b>{security.user.name}</b>
               <span>{security.user.roles.join(", ").replaceAll("_", " ")}</span>
