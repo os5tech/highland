@@ -1,12 +1,11 @@
 import { redirect } from "next/navigation";
-import { DashboardPage } from "@/app/_components/dashboard/DashboardPage";
+import { AdminVaultPage } from "@/app/_components/admin-vault/AdminVaultPage";
 import { getCurrentSession } from "@/src/server/auth/current-session";
 import { getDashboardSecurityContext } from "@/src/server/controllers/dashboardController";
-import { getSystemDiagnostics } from "@/src/server/controllers/systemDiagnosticsController";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
+export default async function AdminVaultRoute() {
   const session = await getCurrentSession();
 
   if (!session) {
@@ -14,7 +13,10 @@ export default async function Home() {
   }
 
   const security = getDashboardSecurityContext(session);
-  const diagnostics = await getSystemDiagnostics();
 
-  return <DashboardPage diagnostics={diagnostics} security={security} />;
+  if (!security.permissions.canAccessAdminVault) {
+    redirect("/");
+  }
+
+  return <AdminVaultPage security={security} />;
 }

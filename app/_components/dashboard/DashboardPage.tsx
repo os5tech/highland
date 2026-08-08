@@ -1,6 +1,6 @@
 import type { DashboardSecurityContext } from "@/src/server/controllers/dashboardController";
 import type { SystemDiagnostics } from "@/src/server/controllers/systemDiagnosticsController";
-import { AdminAndAgentsSection } from "./AdminAndAgentsSection";
+import { AgentsSection } from "./AgentsSection";
 import { DashboardHero } from "./DashboardHero";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { DiagnosticsSection } from "./DiagnosticsSection";
@@ -27,7 +27,7 @@ export function DashboardPage({ diagnostics, security }: DashboardPageProps) {
         <WorkbenchSections />
         <JobCostingSection />
         <IntegrationSection />
-        <AdminAndAgentsSection security={security} />
+        <AgentsSection />
         <DiagnosticsSection diagnostics={diagnostics} />
       </section>
     </main>

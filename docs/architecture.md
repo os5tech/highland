@@ -11,7 +11,7 @@ This project uses a Next.js application with explicit MVC-style boundaries:
 
 The rule is that payroll/job-costing business logic should not call Google, AWS, Microsoft Graph, ADP, QuickBooks, or Procore directly. It should call an interface owned by the application.
 
-Dashboard page sections are split into building blocks under `app/_components/dashboard/`, with static demo content in `app/_data/dashboard.ts`. Route files should stay thin: authenticate, collect server-side context, and render composed page sections.
+Dashboard page sections are split into building blocks under `app/_components/dashboard/`, with static demo content in `app/_data/dashboard.ts`. Route files should stay thin: authenticate, collect server-side context, and render composed page sections. Restricted administration belongs in standalone protected routes such as `app/admin-vault/page.tsx`, not embedded inside the main operational dashboard.
 
 ## Security Baseline
 

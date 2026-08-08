@@ -708,6 +708,67 @@ h1 {
   color: var(--green-dark);
 }
 
+.vault-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.admin-vault-page {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-vault-page .panel-header,
+.admin-vault-page .vault-summary {
+  margin-bottom: 0;
+}
+
+.admin-vault-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-vault-card {
+  min-height: 156px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-vault-card p {
+  margin: 0 0 16px;
+  color: #e5c971;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-vault-card h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 17px;
+}
+
+.admin-vault-card span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .admin-row h3,
 .admin-row p {
   color: #fff;
@@ -865,11 +926,13 @@ h1 {
   }
 
   .allocation-grid,
-  .integration-grid {
+  .integration-grid,
+  .admin-vault-grid {
     grid-template-columns: 1fr;
   }
 
-  .vault-summary button {
+  .vault-summary button,
+  .vault-back-link {
     width: 100%;
   }
 }
