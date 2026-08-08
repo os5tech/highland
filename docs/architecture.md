@@ -11,6 +11,8 @@ This project uses a Next.js application with explicit MVC-style boundaries:
 
 The rule is that payroll/job-costing business logic should not call Google, AWS, Microsoft Graph, ADP, QuickBooks, or Procore directly. It should call an interface owned by the application.
 
+Dashboard page sections are split into building blocks under `app/_components/dashboard/`, with static demo content in `app/_data/dashboard.ts`. Route files should stay thin: authenticate, collect server-side context, and render composed page sections.
+
 ## Security Baseline
 
 - Authentication starts with Microsoft Entra ID through NextAuth.
@@ -21,6 +23,8 @@ The rule is that payroll/job-costing business logic should not call Google, AWS,
 - Production secrets belong in Google Secret Manager.
 - PostgreSQL is the system of record.
 - Audit events are modeled as immutable records for payroll, approvals, corrections, imports, exports, posting, and access decisions.
+
+For local development only, `KEYSTONE_DEV_AUTH_BYPASS=true` can create an MSTest Admin session when the request IP is in `KEYSTONE_DEV_AUTH_ALLOWED_IPS`. Keep this disabled in alpha/live unless a temporary IP allowlist has been deliberately approved and logged.
 
 ## Initial Google Provider Mapping
 

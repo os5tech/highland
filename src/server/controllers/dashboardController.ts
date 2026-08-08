@@ -28,3 +28,5 @@ export function getDashboardSecurityContext(session: Session) {
     },
   };
 }
+
+export type DashboardSecurityContext = ReturnType<typeof getDashboardSecurityContext>;
