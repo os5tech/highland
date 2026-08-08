@@ -1,11 +1,11 @@
 export const navigation = [
-  { label: "Command", href: "/#command" },
+  { label: "Dashboard", href: "/#command" },
   { label: "Time Intake", href: "/#time-intake" },
   { label: "PM Approval", href: "/#pm-approval" },
   { label: "Job Costing", href: "/#job-costing" },
   { label: "Integrations", href: "/#integrations" },
   { label: "AI Agents", href: "/#ai-agents" },
-  { label: "Admin Vault", href: "/admin-vault" },
+  { label: "Admin Vault", href: "/admin-vault", requiresAdmin: true },
 ];
 
 export const metrics = [

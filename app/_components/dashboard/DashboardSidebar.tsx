@@ -3,15 +3,18 @@ import { BrandLockup } from "./BrandLockup";
 
 type DashboardSidebarProps = {
   activeHref?: string;
+  canAccessAdminVault?: boolean;
 };
 
-export function DashboardSidebar({ activeHref = "/#command" }: DashboardSidebarProps) {
+export function DashboardSidebar({ activeHref = "/#command", canAccessAdminVault = false }: DashboardSidebarProps) {
+  const visibleNavigation = navigation.filter((item) => !item.requiresAdmin || canAccessAdminVault);
+
   return (
     <aside className="sidebar" aria-label="Primary navigation">
       <BrandLockup />
 
       <nav className="nav-list">
-        {navigation.map((item) => (
+        {visibleNavigation.map((item) => (
           <a className={item.href === activeHref ? "active" : ""} href={item.href} key={item.label}>
             {item.label}
           </a>

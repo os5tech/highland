@@ -26,7 +26,7 @@ export function hasRole(user: Pick<AuthenticatedUser, "roles">, role: AppRole) {
 }
 
 export function canAccessAdminVault(user: Pick<AuthenticatedUser, "roles">) {
-  return user.roles.some((role) => role === "cfo" || role === "os5_admin");
+  return hasRole(user, "os5_admin");
 }
 
 export function canManagePayroll(user: Pick<AuthenticatedUser, "roles">) {

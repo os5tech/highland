@@ -18,7 +18,7 @@ type DashboardPageProps = {
 export function DashboardPage({ diagnostics, security }: DashboardPageProps) {
   return (
     <main className="app-shell">
-      <DashboardSidebar />
+      <DashboardSidebar canAccessAdminVault={security.permissions.canAccessAdminVault} />
 
       <section className="workspace" id="command">
         <DashboardHero security={security} />

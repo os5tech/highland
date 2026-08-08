@@ -28,7 +28,7 @@ const vaultGroups = [
 export function AdminVaultPage({ security }: AdminVaultPageProps) {
   return (
     <main className="app-shell">
-      <DashboardSidebar activeHref="/admin-vault" />
+      <DashboardSidebar activeHref="/admin-vault" canAccessAdminVault={security.permissions.canAccessAdminVault} />
 
       <section className="workspace admin-vault-workspace">
         <DashboardHero security={security} />
