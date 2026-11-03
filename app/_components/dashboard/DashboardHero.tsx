@@ -2,6 +2,7 @@ import { ProfileMenu } from "@/app/ProfileMenu";
 import type { DashboardSecurityContext } from "@/src/server/controllers/dashboardController";
 import { getRuntimeEnvironmentLabel } from "@/src/server/runtime/environment";
 import { getCurrentSemiMonthlyPayPeriod } from "@/src/server/runtime/pay-period";
+import { PerspectiveSwitcher } from "./PerspectiveSwitcher";
 
 type DashboardHeroProps = {
   security: DashboardSecurityContext;
@@ -22,6 +23,9 @@ export function DashboardHero({ security }: DashboardHeroProps) {
       </div>
       <div className="status-stack">
         <div className="topbar-actions">
+          {security.perspective.canPreviewPerspectives ? (
+            <PerspectiveSwitcher activeRole={security.perspective.activeRole} />
+          ) : null}
           <div className="status-pill"><span />{environmentLabel}</div>
           <ProfileMenu profile={security.profile} />
         </div>

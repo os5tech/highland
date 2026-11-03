@@ -1,9 +1,8 @@
 export const navigation = [
   { label: "Dashboard", href: "/#dashboard" },
-  { label: "Time Intake", href: "/#time-intake" },
+  { label: "Timesheet", href: "/timesheet" },
   { label: "PM Approval", href: "/#pm-approval" },
   { label: "Job Costing", href: "/#job-costing" },
-  { label: "Integrations", href: "/#integrations" },
   { label: "AI Agents", href: "/#ai-agents" },
   { label: "Admin Vault", href: "/admin-vault", requiresAdmin: true },
 ];
@@ -32,6 +31,34 @@ export const metrics = [
     value: "12",
     detail: "Project, General Conditions, GA, and business-development buckets.",
     action: "Sync Procore",
+  },
+];
+
+export const timeSubmitterMetrics = [
+  {
+    label: "Hours This Week",
+    value: "0.0",
+    detail: "No hours entered for the current week yet.",
+    action: "Enter hours",
+    actionHref: "/timesheet",
+  },
+  {
+    label: "Hours This Pay Period",
+    value: "0.0",
+    detail: "Submitted time for the current semi-monthly pay period.",
+    action: "Review period",
+  },
+  {
+    label: "Approved Hours",
+    value: "0.0",
+    detail: "Hours approved by a project manager and ready for payroll review.",
+    action: "View approvals",
+  },
+  {
+    label: "Job Buckets",
+    value: "0",
+    detail: "Projects or labor buckets used on your submitted time.",
+    action: "View buckets",
   },
 ];
 

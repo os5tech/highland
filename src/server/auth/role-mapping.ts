@@ -2,6 +2,7 @@ import type { AppRole } from "@/src/server/domain/roles";
 
 const groupRoleEnv: Record<string, AppRole> = {
   ENTRA_GROUP_FIELD_EMPLOYEE_ID: "field_employee",
+  ENTRA_GROUP_TIME_INTAKE_REQUIRED_ID: "time_intake_required",
   ENTRA_GROUP_PROJECT_MANAGER_ID: "project_manager",
   ENTRA_GROUP_PROJECT_EXECUTIVE_ID: "project_executive",
   ENTRA_GROUP_PAYROLL_ADMIN_ID: "payroll_admin",

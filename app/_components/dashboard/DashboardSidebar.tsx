@@ -1,17 +1,48 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { navigation } from "@/app/_data/dashboard";
 import { BrandLockup } from "./BrandLockup";
 
 type DashboardSidebarProps = {
   activeHref?: string;
   canAccessAdminVault?: boolean;
+  mode?: "operations" | "time-submit" | "pm-review";
 };
 
-export function DashboardSidebar({ activeHref = "/#dashboard", canAccessAdminVault = false }: DashboardSidebarProps) {
+export function DashboardSidebar({ activeHref = "/#dashboard", canAccessAdminVault = false, mode = "operations" }: DashboardSidebarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const visibleNavigation = navigation.filter((item) => !item.requiresAdmin || canAccessAdminVault);
+  const searchParams = useSearchParams();
+  const perspective = searchParams.get("perspective");
+  const perspectiveQuery = perspective ? `?perspective=${encodeURIComponent(perspective)}` : "";
+  const visibleNavigation = navigation.filter((item) => {
+    if (item.requiresAdmin && !canAccessAdminVault) {
+      return false;
+    }
+
+    if (mode === "time-submit") {
+      return item.href === "/#dashboard" || item.href === "/timesheet" || item.href === "/admin-vault";
+    }
+
+    if (mode === "pm-review") {
+      return item.href === "/#dashboard" || item.href === "/#pm-approval" || item.href === "/admin-vault";
+    }
+
+    return true;
+  });
+
+  function hrefFor(href: string) {
+    if (!perspectiveQuery || href === "/admin-vault") {
+      return href;
+    }
+
+    if (href.startsWith("/#")) {
+      return `/${perspectiveQuery}${href.slice(1)}`;
+    }
+
+    return `${href}${perspectiveQuery}`;
+  }
 
   return (
     <aside className={isMenuOpen ? "sidebar is-open" : "sidebar"} aria-label="Primary navigation">
@@ -38,7 +69,7 @@ export function DashboardSidebar({ activeHref = "/#dashboard", canAccessAdminVau
           {visibleNavigation.map((item) => (
             <a
               className={item.href === activeHref ? "active" : ""}
-              href={item.href}
+              href={hrefFor(item.href)}
               key={item.label}
               onClick={() => setIsMenuOpen(false)}
             >

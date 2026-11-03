@@ -1,0 +1,1 @@
+ALTER TYPE "public"."app_role" ADD VALUE 'time_intake_required' BEFORE 'project_manager';

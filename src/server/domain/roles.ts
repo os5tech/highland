@@ -1,5 +1,6 @@
 export const appRoles = [
   "field_employee",
+  "time_intake_required",
   "project_manager",
   "project_executive",
   "payroll_admin",
@@ -35,4 +36,12 @@ export function canManagePayroll(user: Pick<AuthenticatedUser, "roles">) {
 
 export function canApprovePosting(user: Pick<AuthenticatedUser, "roles">) {
   return user.roles.some((role) => role === "accounting" || role === "cfo");
+}
+
+export function canReviewTimeEntries(user: Pick<AuthenticatedUser, "roles">) {
+  return hasRole(user, "project_manager");
+}
+
+export function requiresTimeIntake(user: Pick<AuthenticatedUser, "roles">) {
+  return hasRole(user, "time_intake_required");
 }

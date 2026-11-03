@@ -13,6 +13,7 @@ import {
 
 export const appRole = pgEnum("app_role", [
   "field_employee",
+  "time_intake_required",
   "project_manager",
   "project_executive",
   "payroll_admin",

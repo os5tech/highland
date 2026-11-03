@@ -6,14 +6,21 @@ import { getSystemDiagnostics } from "@/src/server/controllers/systemDiagnostics
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
+type HomeProps = {
+  searchParams?: Promise<{
+    perspective?: string;
+  }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
   const session = await getCurrentSession();
 
   if (!session) {
     redirect("/login");
   }
 
-  const security = getDashboardSecurityContext(session);
+  const resolvedSearchParams = await searchParams;
+  const security = getDashboardSecurityContext(session, resolvedSearchParams?.perspective);
   const diagnostics = await getSystemDiagnostics();
 
   return <DashboardPage diagnostics={diagnostics} security={security} />;
