@@ -12,6 +12,25 @@ type ProfileMenuProps = {
   };
 };
 
+type ProfileResponse = {
+  profile?: { mobilePhone: string | null };
+  error?: string;
+};
+
+async function readProfileResponse(response: Response): Promise<ProfileResponse> {
+  const body = await response.text();
+
+  if (!body) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(body) as ProfileResponse;
+  } catch {
+    return {};
+  }
+}
+
 function initialsFor(name: string, email: string) {
   const source = name.trim() || email.trim();
   const parts = source.split(/[\s@.]+/).filter(Boolean);
@@ -58,7 +77,7 @@ export function ProfileMenu({ profile }: ProfileMenuProps) {
           return;
         }
 
-        const payload = (await response.json()) as { profile?: { mobilePhone: string | null } };
+        const payload = await readProfileResponse(response);
         const value = payload.profile?.mobilePhone ?? "";
 
         if (isMounted) {
@@ -91,10 +110,10 @@ export function ProfileMenu({ profile }: ProfileMenuProps) {
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
-      const payload = (await response.json()) as { profile?: { mobilePhone: string | null }; error?: string };
+      const payload = await readProfileResponse(response);
 
       if (!response.ok || !payload.profile) {
-        throw new Error(payload.error ?? "Mobile number could not be saved.");
+        throw new Error(payload.error ?? `Mobile number could not be saved (${response.status}).`);
       }
 
       const value = payload.profile.mobilePhone ?? "";

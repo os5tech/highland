@@ -54,42 +54,52 @@ async function findOrCreateUser() {
 }
 
 export async function GET() {
-  const user = await findOrCreateUser();
+  try {
+    const user = await findOrCreateUser();
 
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    return NextResponse.json({
+      profile: {
+        mobilePhone: user.mobilePhone,
+      },
+    });
+  } catch (error) {
+    console.error("Profile lookup failed.", error);
+    return NextResponse.json({ error: "Profile could not be loaded." }, { status: 500 });
   }
-
-  return NextResponse.json({
-    profile: {
-      mobilePhone: user.mobilePhone,
-    },
-  });
 }
 
 export async function POST(request: NextRequest) {
-  const user = await findOrCreateUser();
+  try {
+    const user = await findOrCreateUser();
 
-  if (!user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = (await request.json()) as { mobilePhone?: unknown };
+    const mobilePhone = normalizePhone(body.mobilePhone);
+
+    if (!isValidPhone(mobilePhone)) {
+      return NextResponse.json({ error: "Enter a country code and mobile number." }, { status: 400 });
+    }
+
+    const [updated] = await getDb()
+      .update(users)
+      .set({ mobilePhone, updatedAt: new Date() })
+      .where(eq(users.id, user.id))
+      .returning();
+
+    return NextResponse.json({
+      profile: {
+        mobilePhone: updated.mobilePhone,
+      },
+    });
+  } catch (error) {
+    console.error("Profile update failed.", error);
+    return NextResponse.json({ error: "Mobile number could not be saved." }, { status: 500 });
   }
-
-  const body = (await request.json()) as { mobilePhone?: unknown };
-  const mobilePhone = normalizePhone(body.mobilePhone);
-
-  if (!isValidPhone(mobilePhone)) {
-    return NextResponse.json({ error: "Enter a country code and mobile number." }, { status: 400 });
-  }
-
-  const [updated] = await getDb()
-    .update(users)
-    .set({ mobilePhone, updatedAt: new Date() })
-    .where(eq(users.id, user.id))
-    .returning();
-
-  return NextResponse.json({
-    profile: {
-      mobilePhone: updated.mobilePhone,
-    },
-  });
 }
